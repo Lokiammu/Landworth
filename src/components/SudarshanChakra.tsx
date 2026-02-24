@@ -93,9 +93,9 @@ export function SudarshanChakra({
                         {/* Micro triangles on outer ring for serrated edge */}
                         <polygon
                             points={`
-                                ${cx + 39 * Math.cos(rad)},${cy + 39 * Math.sin(rad)}
-                                ${cx + 43 * Math.cos(rad + 0.05)},${cy + 43 * Math.sin(rad + 0.05)}
-                                ${cx + 39 * Math.cos(rad + 0.1)},${cy + 39 * Math.sin(rad + 0.1)}
+                                ${(cx + 39 * Math.cos(rad)).toFixed(3)},${(cy + 39 * Math.sin(rad)).toFixed(3)}
+                                ${(cx + 43 * Math.cos(rad + 0.05)).toFixed(3)},${(cy + 43 * Math.sin(rad + 0.05)).toFixed(3)}
+                                ${(cx + 39 * Math.cos(rad + 0.1)).toFixed(3)},${(cy + 39 * Math.sin(rad + 0.1)).toFixed(3)}
                             `}
                             fill="url(#gold-grad)"
                             opacity={0.4}

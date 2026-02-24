@@ -200,10 +200,15 @@ export function Hero() {
                     className="absolute inset-0 z-40 flex flex-col md:flex-row pointer-events-none"
                 >
                     <div className="hidden md:block w-1/2 h-full" />
-                    <div className="w-full md:w-1/2 h-1/2 md:h-full bg-[#FAFAF6] flex items-center">
+                    <div className="w-full md:w-1/2 h-1/2 md:h-full bg-[#FAFAF6] flex items-center relative border-t-[8px] md:border-t-0 md:border-l-[8px] border-[#C9A84C] shadow-[-20px_0_50px_rgba(0,0,0,0.3)]">
+
+                        {/* Decorative inner document frame for authenticity */}
+                        <div className="absolute inset-4 md:inset-6 border border-[#C9A84C] opacity-40 pointer-events-none rounded-sm" />
+                        <div className="absolute inset-5 md:inset-7 border border-[#C9A84C] opacity-20 pointer-events-none rounded-sm" />
+
                         <motion.div
                             style={{ x: s3X }}
-                            className="px-8 md:pl-16 md:pr-12 w-full max-w-xl flex flex-col gap-5 pointer-events-auto"
+                            className="px-8 md:pl-20 md:pr-16 w-full max-w-xl flex flex-col gap-5 pointer-events-auto relative z-10"
                         >
                             <div className="flex items-center gap-2">
                                 <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2">

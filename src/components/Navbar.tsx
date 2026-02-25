@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { SudarshanChakra } from "./SudarshanChakra";
 
 export function Navbar() {
@@ -96,8 +97,8 @@ export function Navbar() {
                         <button
                             onClick={() => setLang("EN")}
                             className={`px-2 py-1 rounded transition-colors ${lang === "EN"
-                                    ? isOnDark ? "text-white" : "text-black"
-                                    : isOnDark ? "text-white/40 hover:text-white/80" : "text-black/40 hover:text-black/80"
+                                ? isOnDark ? "text-white" : "text-black"
+                                : isOnDark ? "text-white/40 hover:text-white/80" : "text-black/40 hover:text-black/80"
                                 }`}
                         >
                             EN
@@ -106,22 +107,24 @@ export function Navbar() {
                         <button
                             onClick={() => setLang("TE")}
                             className={`px-2 py-1 rounded font-telugu transition-colors ${lang === "TE"
-                                    ? isOnDark ? "text-white" : "text-black"
-                                    : isOnDark ? "text-white/40 hover:text-white/80" : "text-black/40 hover:text-black/80"
+                                ? isOnDark ? "text-white" : "text-black"
+                                : isOnDark ? "text-white/40 hover:text-white/80" : "text-black/40 hover:text-black/80"
                                 }`}
                         >
                             తెలుగు
                         </button>
                     </div>
 
-                    <button
-                        className={`pointer-events-auto px-5 py-2 text-sm font-bold rounded-full transition-all active:scale-95 shadow-lg ${isOnDark
+                    <Link href="/login">
+                        <button
+                            className={`pointer-events-auto px-5 py-2 text-sm font-bold rounded-full transition-all active:scale-95 shadow-lg ${isOnDark
                                 ? "bg-[#C9A84C] text-black hover:bg-[#e8c96a]"
                                 : "bg-black text-white hover:bg-black/80"
-                            }`}
-                    >
-                        Login
-                    </button>
+                                }`}
+                        >
+                            Login
+                        </button>
+                    </Link>
 
                     {/* Mobile Menu Icon */}
                     <button

@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import React, { useRef } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { SudarshanChakra } from "./SudarshanChakra";
 
@@ -129,9 +130,11 @@ export function Hero() {
                         AI-powered land valuation for India.
                     </p>
 
-                    <button className="pointer-events-auto mt-10 px-8 py-4 text-base font-bold text-black bg-gradient-to-r from-[#C9A84C] to-[#e8c96a] rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(201,168,76,0.4)]">
-                        Discover True Value →
-                    </button>
+                    <Link href="/dashboard" className="pointer-events-auto mt-10">
+                        <button className="px-8 py-4 text-base font-bold text-black bg-gradient-to-r from-[#C9A84C] to-[#e8c96a] rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(201,168,76,0.4)]">
+                            Discover True Value →
+                        </button>
+                    </Link>
 
                     <div className="absolute bottom-8 flex items-center gap-2 animate-bounce">
                         <SudarshanChakra size={16} className="animate-spin-60s" />

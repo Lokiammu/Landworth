@@ -5,71 +5,25 @@ interface APMapBackgroundProps {
 }
 
 /**
- * Reusable Andhra Pradesh map background with decorative SVG outlines,
- * pulsing district markers, and glowing accent orbs.
+ * Reusable Andhra Pradesh map background with the official SVG outline
+ * and glowing accent orbs. Matches the FlagDiscrepancy section style.
  */
 export function APMapBackground({ className = "" }: APMapBackgroundProps) {
+    const AP = "M297,6 L298,6 L297,7 L298,9 L297,12 L292,17 L286,26 L285,26 L283,29 L281,29 L280,30 L280,32 L273,40 L269,42 L267,42 L258,47 L255,50 L255,51 L250,55 L247,61 L244,61 L243,62 L245,63 L243,64 L242,66 L235,69 L229,73 L227,73 L223,75 L211,84 L207,90 L207,93 L209,95 L211,95 L210,101 L205,107 L201,109 L199,109 L197,111 L194,111 L189,114 L183,113 L182,112 L181,113 L180,112 L178,113 L177,112 L173,112 L170,115 L169,120 L167,124 L167,127 L161,132 L162,134 L161,134 L160,136 L158,135 L158,133 L159,132 L158,130 L156,132 L155,136 L155,132 L153,130 L148,130 L139,134 L134,139 L132,144 L132,147 L128,152 L127,161 L126,162 L127,164 L127,168 L128,169 L128,174 L131,178 L131,180 L132,181 L131,182 L131,189 L130,191 L127,193 L127,194 L128,195 L129,194 L130,202 L134,210 L133,212 L134,217 L131,212 L130,213 L130,215 L129,214 L127,216 L128,220 L127,219 L126,220 L126,222 L123,224 L123,226 L119,228 L117,228 L116,229 L117,231 L115,231 L113,228 L110,229 L107,226 L106,226 L104,228 L104,231 L100,234 L98,233 L97,235 L93,238 L91,238 L88,236 L86,236 L85,238 L84,236 L81,236 L77,238 L75,240 L75,243 L73,248 L71,249 L68,253 L64,252 L61,249 L62,248 L62,246 L63,246 L65,243 L68,245 L70,244 L68,241 L72,236 L73,231 L74,230 L72,228 L71,229 L69,227 L66,227 L66,218 L65,217 L60,217 L58,216 L57,214 L55,214 L57,213 L56,212 L56,208 L54,206 L49,207 L51,205 L50,203 L49,203 L48,205 L47,204 L44,204 L43,205 L44,206 L43,208 L40,210 L36,211 L34,213 L32,213 L32,210 L29,207 L25,207 L21,205 L19,207 L20,210 L18,210 L17,211 L16,210 L15,211 L16,204 L14,202 L14,199 L12,196 L14,196 L14,198 L15,199 L21,203 L22,202 L26,202 L27,205 L30,207 L31,205 L28,200 L29,199 L29,197 L33,195 L33,192 L30,189 L28,190 L29,193 L25,189 L20,189 L18,191 L18,193 L13,192 L11,188 L14,185 L12,183 L9,183 L7,180 L7,176 L8,175 L10,167 L6,165 L7,164 L7,162 L9,162 L11,164 L16,164 L17,165 L21,160 L20,153 L17,151 L17,149 L15,146 L17,144 L16,141 L19,139 L17,135 L17,132 L20,129 L25,128 L26,129 L33,129 L34,130 L38,130 L39,131 L47,131 L48,130 L54,133 L56,133 L61,129 L62,126 L64,126 L66,124 L71,124 L72,125 L74,125 L75,124 L78,126 L81,126 L84,123 L83,122 L85,122 L87,119 L89,118 L93,118 L95,119 L97,117 L98,115 L97,113 L97,108 L99,105 L104,105 L106,103 L109,103 L116,100 L118,100 L119,101 L120,100 L122,103 L124,103 L128,97 L128,95 L126,92 L129,89 L134,88 L136,92 L139,95 L143,97 L146,97 L147,96 L146,94 L147,93 L147,91 L146,90 L141,90 L140,89 L140,87 L142,88 L145,84 L148,84 L152,87 L156,87 L160,81 L164,81 L171,76 L177,75 L180,72 L180,69 L181,68 L182,63 L186,59 L189,58 L191,56 L190,54 L200,49 L207,51 L211,48 L211,46 L212,45 L210,42 L212,39 L212,34 L214,31 L216,31 L216,34 L219,37 L219,41 L220,42 L226,38 L228,34 L230,35 L231,37 L236,36 L237,35 L236,33 L238,31 L236,28 L236,26 L238,23 L240,21 L241,22 L243,22 L249,18 L249,16 L247,15 L246,12 L250,14 L252,12 L252,10 L253,12 L257,8 L259,10 L261,15 L263,14 L262,12 L264,13 L264,15 L267,20 L272,20 L273,19 L278,21 L279,20 L283,20 L285,17 L288,15 L289,11 L293,9 L295,9 L297,7 Z";
+
     return (
         <>
-            {/* Abstract AP Vector Map */}
-            <div className={`absolute inset-0 z-0 flex items-center justify-center opacity-[0.12] pointer-events-none ${className}`}>
-                <svg
-                    viewBox="0 0 200 250"
-                    className="w-[110%] h-[110%] text-[#C9A84C]"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="0.6"
-                >
-                    {/* Main AP outline (simplified) */}
-                    <path
-                        d="M60,30 Q80,15 110,20 Q140,25 160,50 Q175,70 170,100 Q165,130 150,155 Q135,175 120,190 Q100,210 85,220 Q70,225 55,215 Q40,200 35,175 Q30,150 35,120 Q38,95 45,70 Q50,50 60,30Z"
-                        fill="currentColor"
-                        fillOpacity="0.04"
-                        strokeWidth="0.8"
-                    />
-
-                    {/* Inner boundaries */}
-                    <path d="M70,60 Q90,45 120,55 Q145,65 155,90" strokeDasharray="2,2" opacity="0.5" />
-                    <path d="M45,120 Q65,110 90,115 Q120,120 140,140" strokeDasharray="2,2" opacity="0.5" />
-                    <path d="M55,170 Q75,160 100,165 Q120,170 130,185" strokeDasharray="2,2" opacity="0.5" />
-
-                    {/* District markers */}
-                    {[
-                        { cx: 100, cy: 55, label: "Visakhapatnam" },
-                        { cx: 130, cy: 85, label: "Kakinada" },
-                        { cx: 110, cy: 120, label: "Vijayawada" },
-                        { cx: 85, cy: 150, label: "Guntur" },
-                        { cx: 70, cy: 185, label: "Kurnool" },
-                        { cx: 105, cy: 195, label: "Tirupati" },
-                        { cx: 145, cy: 110, label: "Rajahmundry" },
-                    ].map((d, i) => (
-                        <g key={i}>
-                            <circle
-                                cx={d.cx}
-                                cy={d.cy}
-                                r={2.5}
-                                fill="currentColor"
-                                className="animate-pulse"
-                                style={{ animationDelay: `${i * 0.5}s` }}
-                            />
-                            <circle cx={d.cx} cy={d.cy} r={5} fill="none" stroke="currentColor" strokeWidth="0.3" opacity="0.4" />
-                        </g>
-                    ))}
-
-                    {/* Coastline detail */}
-                    <path
-                        d="M160,50 Q170,65 172,85 Q173,105 168,125 Q160,145 150,160 Q138,178 125,192"
-                        strokeWidth="1"
-                        opacity="0.3"
-                        strokeDasharray="3,1"
-                    />
+            {/* Real AP Vector Outline */}
+            <div className={`absolute inset-0 z-0 flex items-center justify-center opacity-15 text-[#C9A84C] pointer-events-none select-none overflow-hidden ${className}`}>
+                <svg viewBox="-2 -2 310 284" className="w-[800px] md:w-[1200px] h-full object-contain" fill="currentColor" preserveAspectRatio="xMidYMid meet">
+                    <path d={AP} />
                 </svg>
             </div>
 
             {/* Glowing Accent Orbs */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-                <div className="absolute top-[10%] left-[15%] w-[30%] h-[30%] bg-[#C9A84C]/8 blur-[100px] rounded-full" />
-                <div className="absolute bottom-[20%] right-[10%] w-[35%] h-[35%] bg-[#C9A84C]/8 blur-[120px] rounded-full" />
+                <div className="absolute top-[10%] left-[15%] w-[30%] h-[30%] bg-[#C9A84C]/15 blur-[100px] rounded-full" />
+                <div className="absolute bottom-[20%] right-[10%] w-[35%] h-[35%] bg-[#C9A84C]/15 blur-[120px] rounded-full" />
             </div>
         </>
     );

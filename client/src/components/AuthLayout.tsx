@@ -16,7 +16,7 @@ interface AuthLayoutProps {
  */
 export function AuthLayout({ children }: AuthLayoutProps) {
     return (
-        <main className="min-h-screen bg-[#0A0A0A] flex items-center justify-center p-6 pt-24 relative overflow-hidden">
+        <main className="min-h-screen bg-[#050505] bg-rangoli flex items-center justify-center p-6 pt-24 relative overflow-hidden">
             {/* Background Map */}
             <APMapBackground />
 

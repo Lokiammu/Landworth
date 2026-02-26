@@ -107,4 +107,33 @@ router.get("/me", (req: Request, res: Response): void => {
     }
 });
 
+// ─── POST /api/auth/refresh ───────────────────────────────────────
+// Silently refresh the JWT if the current token is still valid.
+// Called periodically by the client before the token expires.
+router.post("/refresh", (req: Request, res: Response): void => {
+    const token = req.cookies?.[SESSION_COOKIE_NAME];
+
+    if (!token) {
+        res.status(200).json({ authenticated: false, user: null });
+        return;
+    }
+
+    try {
+        const decoded = verifyToken(token);
+
+        // Re-sign a fresh token with the same user data
+        const newToken = signToken(decoded.user);
+        setSessionCookie(res, newToken);
+
+        res.status(200).json({
+            authenticated: true,
+            user: decoded.user,
+            message: "Token refreshed",
+        });
+    } catch {
+        clearSessionCookie(res);
+        res.status(200).json({ authenticated: false, user: null });
+    }
+});
+
 export default router;

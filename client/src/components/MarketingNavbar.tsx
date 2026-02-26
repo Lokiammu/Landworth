@@ -3,17 +3,33 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { SudarshanChakra } from "./SudarshanChakra";
-import { useAuth } from "@/context/AuthContext";
 import { LogOut, User } from "lucide-react";
 
-export function Navbar() {
-    const { user, isAuthenticated, isLoading, logout } = useAuth();
+/**
+ * Lightweight Navbar for static marketing pages.
+ * Does a simple /api/auth/me check to know if the user is logged in,
+ * but does NOT require AuthProvider — works completely standalone.
+ */
+export function MarketingNavbar() {
     const [scrollY, setScrollY] = useState(0);
     const [isOnDark, setIsOnDark] = useState(true);
     const [menuOpen, setMenuOpen] = useState(false);
     const [lang, setLang] = useState<"EN" | "TE">("EN");
     const [activeSection, setActiveSection] = useState("");
+    const [user, setUser] = useState<{ name: string; email: string } | null>(null);
     const [showUserMenu, setShowUserMenu] = useState(false);
+
+    // Check auth status on mount (lightweight, no context needed)
+    useEffect(() => {
+        fetch("/api/auth/me", { credentials: "include" })
+            .then((r) => r.json())
+            .then((data) => {
+                if (data.authenticated && data.user) {
+                    setUser(data.user);
+                }
+            })
+            .catch(() => { /* guest user */ });
+    }, []);
 
     // Track scroll for chakra rotation
     useEffect(() => {
@@ -83,7 +99,9 @@ export function Navbar() {
 
     const handleLogout = async () => {
         setShowUserMenu(false);
-        await logout();
+        await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+        setUser(null);
+        window.location.reload();
     };
 
     return (
@@ -159,10 +177,7 @@ export function Navbar() {
                     </div>
 
                     {/* ─── Auth: Login / User Menu ──────────────────── */}
-                    {isLoading ? (
-                        /* Skeleton placeholder while checking auth */
-                        <div className="w-[100px] h-[48px] rounded-full bg-white/5 animate-pulse" />
-                    ) : isAuthenticated && user ? (
+                    {user ? (
                         /* ─── Logged In: User Avatar + Dropdown ────── */
                         <div className="relative">
                             <button
@@ -194,16 +209,13 @@ export function Navbar() {
                             {/* Dropdown Menu */}
                             {showUserMenu && (
                                 <div
-                                    className="absolute right-0 top-full mt-2 w-56 bg-[#111111] border border-white/10 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.6)] overflow-hidden animate-in fade-in slide-in-from-top-2 z-[300]"
+                                    className="absolute right-0 top-full mt-2 w-56 bg-[#111111] border border-white/10 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.6)] overflow-hidden z-[300]"
                                     onClick={(e) => e.stopPropagation()}
                                 >
-                                    {/* User Info */}
                                     <div className="px-4 py-3 border-b border-white/5">
                                         <p className="text-sm font-bold text-white truncate">{user.name}</p>
                                         <p className="text-xs text-white/40 truncate">{user.email}</p>
                                     </div>
-
-                                    {/* Menu Items */}
                                     <div className="py-1">
                                         <Link
                                             href="/dashboard"
@@ -267,9 +279,8 @@ export function Navbar() {
                     <a href="#about" onClick={() => setMenuOpen(false)} className="py-2 hover:text-[#C9A84C]">About</a>
                     <a href="#contact" onClick={() => setMenuOpen(false)} className="py-2 hover:text-[#C9A84C]">Contact</a>
 
-                    {/* Mobile Auth */}
                     <div className="border-t border-white/10 pt-3 mt-1">
-                        {isAuthenticated && user ? (
+                        {user ? (
                             <button
                                 onClick={() => { setMenuOpen(false); handleLogout(); }}
                                 className="flex items-center gap-2 py-2 text-red-400/70 hover:text-red-400 transition-colors"

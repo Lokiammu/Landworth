@@ -56,5 +56,8 @@ export const api = {
 
         me: () =>
             request("/auth/me"),
+
+        refresh: () =>
+            request("/auth/refresh", { method: "POST" }),
     },
 };

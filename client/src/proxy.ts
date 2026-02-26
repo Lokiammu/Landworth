@@ -4,7 +4,7 @@ const SESSION_COOKIE_NAME = "landworth_session";
 
 // Routes that require authentication
 const protectedRoutes = ["/dashboard", "/profile", "/settings"];
-// Routes only accessible to guests
+// Routes only accessible to guests (redirect to dashboard if already logged in)
 const authRoutes = ["/login", "/signup"];
 
 export function proxy(request: NextRequest) {
@@ -17,10 +17,12 @@ export function proxy(request: NextRequest) {
 
     // Redirect to login if accessing protected route without session
     if (isProtectedRoute && !hasSession) {
-        return NextResponse.redirect(new URL("/login", request.url));
+        const loginUrl = new URL("/login", request.url);
+        loginUrl.searchParams.set("redirect", path);
+        return NextResponse.redirect(loginUrl);
     }
 
-    // Redirect to dashboard if accessing auth route with session
+    // Redirect to dashboard if accessing auth route with active session
     if (isAuthRoute && hasSession) {
         return NextResponse.redirect(new URL("/dashboard", request.url));
     }
@@ -30,6 +32,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
     matcher: [
-        "/((?!_next/static|_next/image|favicon.ico).*)",
+        "/((?!_next/static|_next/image|favicon.ico|api).*)",
     ],
 };
